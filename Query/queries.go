@@ -57,7 +57,7 @@ func getDepartmens() {
 	db, err := sql.Open("mysql", "root:root@/employees")
 	checkErr(err)
 
-	rows, err := db.Query("SELECT CONCAT(' Department - ',dept.dept_name, ', Employees_Number - ',COUNT(emp.emp_no), ', Dept_Salary - ', SUM(sal.salary)) from departments dept join dept_emp cdept on dept.dept_no = cdept.dept_no join employees emp on emp.emp_no = cdept.emp_no join salaries sal ON emp.emp_no = sal.emp_no WHERE cdept.to_date = '9999-01-01' AND sal.to_date = '9999-01-01' GROUP BY dept.dept_name ORDER BY dept.dept_name LIMIT 1000;")
+	rows, err := db.Query("SELECT CONCAT(' Department - ',dept.dept_name, ', Employees_Number - ',COUNT(emp.emp_no), ', Dept_Salary - ', SUM(sal.salary)) from departments dept join dept_emp cdept on dept.dept_no = cdept.dept_no join employees emp on emp.emp_no = cdept.emp_no join salaries sal ON emp.emp_no = sal.emp_no WHERE cdept.to_date = '9999-01-01' AND sal.to_date = '9999-01-01' GROUP BY dept.dept_name ORDER BY dept.dept_name;")
 	checkErr(err)
 	employee := Employee{}
 	employees := []Employee{}
